@@ -1,0 +1,34 @@
+﻿@using MatriculacionesAlumnosAPP.Models
+@model List<Matricula>
+@{
+    ViewBag.Title = "VerMatriculasConInclude";
+}
+
+<h2>MATRICULACIONES (BOOTSTRAP 3)</h2>
+@Html.ActionLink("Nueva Matrícula", "CrearMatricula", "Matricula", null, new { @class = "btn btn-success" })
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Alumno</th>
+            <th>Edad</th>
+            <th>Matricula</th>
+            <th>Creditos</th>
+            <th>Fecha Matricula</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Matricula Matricula in Model)
+        {
+            <tr>
+                <td>@Matricula.Alumno.nombreAlumno</td>
+                <td>@Matricula.Alumno.Edad</td>
+                <td>@Matricula.Asignatura.nombreAsignatura</td>
+                <td>@Matricula.Asignatura.Creditos</td>
+                <td>@Matricula.Fecha_Matricula</td>
+                <td>@Html.ActionLink("Eliminar", "EliminarMatricula", "Matricula", new { id = Matricula.MatriculaID }, new { @class = "btn btn-danger" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
